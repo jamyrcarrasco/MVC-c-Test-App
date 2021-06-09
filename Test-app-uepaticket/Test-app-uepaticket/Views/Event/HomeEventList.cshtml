@@ -1,0 +1,52 @@
+﻿@model List<Test_app_uepaticket.Context.@event>
+
+@{
+    ViewBag.Title = "HomeEventList";
+}
+
+<style>
+    .imageSize{
+         display: block;
+          max-width: 100%;
+          height: auto;
+    }
+</style>
+
+<div class="img-fluid ">
+    <img alt="Banner" src="~/Public/banner-multas.png" class="imageSize"/>
+</div>
+<hr />
+<div style="margin-top: 50px" class="row">
+    <div class="col-md-4">
+        @using (Html.BeginForm("HomeEventList", "Event", FormMethod.Get))
+        {
+        
+            <label>Event Name</label>
+            @Html.TextBox("searchValue")
+            <button type="submit" class="btn btn-primary">Search</button>
+        
+        }
+    </div>
+
+</div>
+<hr />
+<div style="margin-top: 50px" class="row">
+    @foreach (var list in Model)
+    {
+        <div class="col-md-4 col-sm-4 col-xs-4">
+            <h3 style="text-align: center">@list.name</h3>
+            <div class="panel-body">
+                <div style="text-align: center" class="card-image">
+                    <img height="160px" alt="Event Image" src="@list.image_url" />
+                </div>
+            </div>
+            <div class="panel-footer">
+                <a href="#"> <i class="glyphicon glyphicon-share " data-toggle="tooltip" placement="left" title="Share"></i></a>
+
+            </div>
+        </div>
+    }
+
+
+</div>
+

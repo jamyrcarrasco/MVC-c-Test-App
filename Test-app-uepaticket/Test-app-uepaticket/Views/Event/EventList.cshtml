@@ -1,0 +1,32 @@
+﻿@model List<Test_app_uepaticket.Context.@event>
+@{
+    ViewBag.Title = "EventList";
+}
+
+<h2>Events Table List</h2>
+<div style="margin-top: 50px">
+    <div>
+        <button onclick="location.href='@Url.Action( "Event")'" class="btn btn-primary">Create New</button>
+    </div>
+    <table style="margin-top: 20px" class="table table-hover">
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Image URL</th>
+            <th>Actions</th>
+        </tr>
+
+        @foreach (var list in Model)
+        {
+    <tr>
+        <td>@list.name</td>
+        <td>@list.description</td>
+        <td>@list.image_url</td>
+        <td>
+            <a href="@Url.Action("Event", new { list.id, list.name, list.description, list.event_location_id, list.event_category_id, list.image_url })"><i class="glyphicon glyphicon-pencil " data-toggle="tooltip" placement="left" title="Edit"></i>  </a>
+            <a href="@Url.Action("Delete", new { list.id})"><i class="glyphicon glyphicon-trash" data-toggle="tooltip" placement="left" title="Delete"></i>  </a>
+        </td>
+    </tr>
+        }
+    </table>
+</div>

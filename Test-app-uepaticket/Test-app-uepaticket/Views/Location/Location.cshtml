@@ -1,0 +1,38 @@
+﻿@model Test_app_uepaticket.Context.event_location
+    @{
+        ViewBag.Title = "Location";
+    }
+
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+
+    <h2>Location Event Maintenance</h2>
+    <div style="margin-top: 50px">
+        @using (Html.BeginForm("AddOrEditLocation", "Location", FormMethod.Post))
+        {
+            <form>
+                <div class="container">
+                    <div class="form-group">
+                        @Html.HiddenFor(x => x.id)
+                        <label>Location</label>
+                        @Html.ValidationMessageFor(x => x.name, "", new { @class = "error" })
+                        @Html.TextBoxFor(x => x.name, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        @Html.ValidationMessageFor(x => x.description, "", new { @class = "error" })
+                        @Html.TextAreaFor(x => x.description, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button onclick="history.go(-1)" type="reset" class="btn btn-danger">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        }
+    </div>
+
